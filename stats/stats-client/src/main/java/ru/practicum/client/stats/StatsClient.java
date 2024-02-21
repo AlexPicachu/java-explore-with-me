@@ -36,7 +36,7 @@ public class StatsClient {
         final String url = uri + "/stats?start={start}&end={end}&uris={uris}&unique={unique}";
         ResponseEntity<List<ViewStats>> responseEntity = restTemplate.exchange(
                 url, HttpMethod.GET, HttpEntity.EMPTY,
-                new ParameterizedTypeReference<List<ViewStats>>() {
+                new ParameterizedTypeReference<>() {
                 },
                 Map.of("start", start,
                         "end", end,

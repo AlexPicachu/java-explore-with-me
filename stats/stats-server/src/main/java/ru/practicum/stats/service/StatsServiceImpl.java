@@ -42,7 +42,7 @@ public class StatsServiceImpl implements StatsService {
      * @param endSt   - Дата и время конца диапазона за который нужно выгрузить статистику
      * @param uris    - Список uri для которых нужно выгрузить статистику
      * @param unique  Нужно ли учитывать только уникальные посещения (только с уникальным ip)
-     * @return
+     * @return - статистику за определенный промежуток времени
      */
     @Override
     public List<ViewStats> getStats(String startSt, String endSt, List<String> uris, Boolean unique) {
