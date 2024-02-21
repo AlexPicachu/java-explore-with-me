@@ -2,6 +2,7 @@ package ru.practicum.stats.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.dto.stats.EndpointHit;
 import ru.practicum.dto.stats.ViewStats;
@@ -25,8 +26,9 @@ public class StatsController {
      * @param endpointHit - принимает на вход Stats в формате EndpointHit
      */
     @PostMapping("/hit")
+    @ResponseStatus(HttpStatus.CREATED)
     public void hit(@RequestBody EndpointHit endpointHit) {
-        log.info("Добавлена новая запись в статистику {}", endpointHit);
+        log.info("Информация сохранена {}", endpointHit);
         statsService.add(endpointHit);
     }
 
@@ -40,6 +42,7 @@ public class StatsController {
      * @return
      */
     @GetMapping("/stats")
+    @ResponseStatus(HttpStatus.OK)
     public List<ViewStats> getStats(@RequestParam String start,
                                     @RequestParam String end,
                                     @RequestParam(required = false) List<String> uris,
