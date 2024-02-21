@@ -26,7 +26,6 @@ public class StatsServiceImpl implements StatsService {
 
     /**
      * метод добавления статистики
-     *
      * @param endpointHit - принимает на вход Stats в формате EndpointHit
      */
     @Override
