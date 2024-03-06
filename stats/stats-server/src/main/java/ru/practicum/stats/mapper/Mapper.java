@@ -5,6 +5,9 @@ import lombok.NoArgsConstructor;
 import ru.practicum.dto.stats.EndpointHit;
 import ru.practicum.stats.model.Stats;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * класс Mapper, преобразовывает EndpointHit в Stats, для корректного добавления записи в б/д
  */
@@ -15,6 +18,7 @@ public class Mapper {
                 .app(endpointHit.getApp())
                 .uri(endpointHit.getUri())
                 .ip(endpointHit.getIp())
-                .timestamp(endpointHit.getTimestamp()).build();
+                .timestamp(LocalDateTime.parse(endpointHit.getTimestamp(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                .build();
     }
 }

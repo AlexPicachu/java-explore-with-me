@@ -11,7 +11,6 @@ import ru.practicum.stats.model.Stats;
 import ru.practicum.stats.repository.StateRepository;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -38,17 +37,14 @@ public class StatsServiceImpl implements StatsService {
     /**
      * метод возвращающий статистику за определенный промежуток времени
      *
-     * @param startSt -Дата и время начала диапазона за который нужно выгрузить статистику
-     * @param endSt   - Дата и время конца диапазона за который нужно выгрузить статистику
-     * @param uris    - Список uri для которых нужно выгрузить статистику
-     * @param unique  Нужно ли учитывать только уникальные посещения (только с уникальным ip)
+     * @param start  -Дата и время начала диапазона за который нужно выгрузить статистику
+     * @param end    - Дата и время конца диапазона за который нужно выгрузить статистику
+     * @param uris   - Список uri для которых нужно выгрузить статистику
+     * @param unique Нужно ли учитывать только уникальные посещения (только с уникальным ip)
      * @return - статистику за определенный промежуток времени
      */
     @Override
-    public List<ViewStats> getStats(String startSt, String endSt, List<String> uris, Boolean unique) {
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime start = LocalDateTime.parse(startSt, format);
-        LocalDateTime end = LocalDateTime.parse(endSt, format);
+    public List<ViewStats> getStats(LocalDateTime start, LocalDateTime end, List<String> uris, Boolean unique) {
         if (start.isAfter(end) || start.equals(end)) {
             throw new ValidationException("Некорректно заданы временные заданы параметры поиска");
         }
