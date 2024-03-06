@@ -39,9 +39,9 @@ public class RequestServiceImpl implements RequestService {
      */
     @Override
     public List<ParticipationRequestDto> getUserRequests(long userId) {
-        User User = userRepository.findById(userId)
+        User user = userRepository.findById(userId)
                 .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
-        List<ParticipationRequest> requestList = requestRepository.findAllByRequester_Id(userId);
+        List<ParticipationRequest> requestList = requestRepository.findAllByRequester_Id(user.getId());
         List<ParticipationRequestDto> requestDtos = requestList.stream().map(RequestMapper::toParticipationRequestDto)
                 .collect(Collectors.toList());
         log.info("Найдены запросы на участие {}", requestList);
