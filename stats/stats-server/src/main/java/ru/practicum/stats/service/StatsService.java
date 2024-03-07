@@ -3,6 +3,7 @@ package ru.practicum.stats.service;
 import ru.practicum.dto.stats.EndpointHit;
 import ru.practicum.dto.stats.ViewStats;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -26,6 +27,6 @@ public interface StatsService {
      * @param unique Нужно ли учитывать только уникальные посещения (только с уникальным ip)
      * @return
      */
-    List<ViewStats> getStats(String start, String end, List<String> uris, Boolean unique);
+    List<ViewStats> getStats(LocalDateTime start, LocalDateTime end, List<String> uris, Boolean unique);
 
 }
