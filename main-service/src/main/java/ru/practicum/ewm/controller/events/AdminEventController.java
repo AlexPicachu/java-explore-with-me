@@ -32,7 +32,7 @@ public class AdminEventController {
      * @param rangeStart - дата и время не раньше которых должно произойти событие
      * @param rangeEnd   - дата и время не позже которых должно произойти событие
      * @param from       - количество событий, которые нужно пропустить для формирования текущего набора
-     * @param size       -количество событий в наборе
+     * @param size       - количество событий в наборе
      * @return - List<EventFullDto>
      */
     @GetMapping
